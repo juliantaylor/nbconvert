@@ -44,6 +44,9 @@ class ConverterHTML(Converter):
         static = os.path.join(path.get_ipython_package_dir(),
         'frontend', 'html', 'notebook', 'static',
         )
+        # temporay debian package path until #2268 is fixed
+        if not os.path.exists(static):
+            static = "/usr/share/ipython/notebook/static/"
         here = os.path.split(os.path.realpath(__file__))[0]
         css = os.path.join(static, 'css')
         for sheet in [
